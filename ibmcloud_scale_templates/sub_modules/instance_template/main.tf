@@ -30,7 +30,7 @@ module "generate_storage_cluster_keys" {
 module "deploy_security_group" {
   source            = "../../../resources/ibmcloud/security/security_group"
   turn_on           = var.deploy_controller_sec_group_id == null ? true : false
-  sec_group_name    = ["Deploy-Sec-group"]
+  sec_group_name    = [format("%s-deploy-sg", var.resource_prefix)]
   vpc_id            = var.vpc_id
   resource_group_id = var.resource_group_id
   resource_tags     = var.scale_cluster_resource_tags
